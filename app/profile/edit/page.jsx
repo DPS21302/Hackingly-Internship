@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { baseURL } from "@/utils/BaseURL";
-import Loading from "@/components/Loading";
+import Loading, {GettingData} from "@/components/Loading";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
@@ -26,17 +26,17 @@ const ProfileUpdateForm = () => {
       setUserData(response.data.data);
 
     } catch (error) {
-      // console.error("Error Getting profile:", error);
+      console.error("Error Getting profile:", error);
     }
   };
 
 
   useEffect(()=>{
     console.log("Status: ", status);
-    if(status==="unauthenticated"){
-    return(router.push("/login"))
+    if(!session && status==="unauthenticated"){
+      router.push("/login")
     }
-  }, [status]);
+  },[status, router]);
 
   useEffect(() => {
 
@@ -45,8 +45,9 @@ const ProfileUpdateForm = () => {
     }
   }, [session?.user?.data?.access]);
 
-  if (status === "loading" || userData.length === 0 ) return <Loading />;
+  if (status === "loading" || status==="unauthenticated" ) {return <Loading />;}
 
+  else if (status === "authenticated" && userData.length === 0) {return <GettingData />;}
   return (
     <div >
       <UpdateUserDetailsForm userData={userData}/>
