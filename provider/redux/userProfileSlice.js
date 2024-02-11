@@ -14,6 +14,7 @@ export const fetchUser = createAsyncThunk(
       const response = await axios.get(`${baseURL}/profile/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      // console.log("Response: ", response.data);
       if(response.status === 200) return response.data;
     } catch (error) {
       throw error;

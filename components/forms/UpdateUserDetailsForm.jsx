@@ -1,15 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import { Country, State, City } from "country-state-city";
+import { useForm, useFieldArray } from "react-hook-form";
+import React, { useState, useEffect } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { baseURL } from "@/utils/BaseURL";
+import { FaTimes } from 'react-icons/fa';
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-import { useSession } from "next-auth/react";
-import { baseURL } from "@/utils/BaseURL";
-import { useForm, useFieldArray } from "react-hook-form";
-import { Country, State, City } from "country-state-city";
-import { FaTimes } from 'react-icons/fa';
-import { useRouter } from "next/navigation";
-import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
 import {
   Card,

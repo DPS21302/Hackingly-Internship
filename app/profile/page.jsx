@@ -3,7 +3,7 @@ import Loading from "@/components/Loading";
 import ProfileData from "@/components/ProfileData";
 import { fetchUser } from "@/provider/redux/userProfileSlice";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,18 +14,19 @@ const ProfilePage = () => {
 
   const router = useRouter();
 
-  useEffect(()=>{
-    // console.log("Status: ", status);
-    if(status==="unauthenticated"){
-    return(router.push("/login"))
+  useLayoutEffect(()=>{
+    console.log("Status: ", status);
+    if(!session && status==="unauthenticated"){
+      router.push("/login")
     }
-  },[status[0]]);
+  },[status, router]);
 
   useEffect(() => {
     dispatch(fetchUser(session?.user?.data?.access));
   }, [dispatch, session?.user?.data?.access]);
 
-  if (status === "loading") return <Loading />;
+  
+  if (status === "loading" || status==="unauthenticated") {return <Loading />;}
 
   return (
     <div className="pt-20 layoutBox">
