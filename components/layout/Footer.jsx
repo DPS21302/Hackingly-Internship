@@ -1,8 +1,9 @@
 import React from 'react';
-import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import Link from 'next/link';
 import G from '@/assets/images/G.webp';
 import Image from 'next/image';
+import { FaDiscord, FaInstagram, FaLinkedin } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -54,15 +55,15 @@ const Footer = () => {
               COMPANY
             </h1>
             <div className="text-white mt-4 cursor-pointer">
-            <Link href="/about-us">
+            {/* <Link href="/about-us">
               <h2>About Us</h2>
-              </Link>
-              <Link href="/faq">
+            </Link>
+            <Link href="/faq">
               <h2>FAQ</h2>
-              </Link>
-              <Link href="/support">
+            </Link> */}
+            <Link href="/support">
               <h2>Contact Us</h2>
-              </Link>
+            </Link>
             </div>
           </div>
         </div>
@@ -74,19 +75,19 @@ const Footer = () => {
 
       {/* Social Icons */}
       <div className="flex mt-4 md:mt-100 items-end lg:justify-start justify-center">
-        <Link href="https://youtube.com" className="mr-4">
+        <Link href="https://www.instagram.com/hackingly_/" className="mr-4">
           <span style={{ color: 'white' }}>
-            <Facebook size={30} />
+            <FaInstagram size={30} />
           </span>
         </Link>
-        <Link href="https://youtube.com" className="mr-4">
+        <Link href="https://www.linkedin.com/company/hackingly/" className="mr-4">
           <span style={{ color: 'white' }}>
-            <Instagram size={30} />
+            <FaLinkedin size={30} />
           </span>
         </Link>
-        <Link href="https://youtube.com" className="mr-4">
+        <Link href="https://discord.gg/gCh96bjF" className="mr-4">
           <span style={{ color: 'white' }}>
-            <Youtube size={30} />
+            <FaDiscord size={30} />
           </span>
         </Link>
       </div>
