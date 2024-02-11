@@ -11,8 +11,8 @@ const OrganizeEventForm = () => {
   return (
     <>
       <div className=" h-fit pt-20 md:h-screen relative overflow-hidden w-[100%]">
-        {/* <div className="sm:hidden absolute inset-0 w-full h-full bg-primary -z-[9] "></div> */}
-        {/* <div className="sm:hidden absolute inset-0 w-full h-full bg-primary -z-[9] "></div> */}
+      
+        <div className="sm:hidden absolute inset-0 w-full h-full bg-primary -z-[9] "></div>
         <Image
           src={MaskGroup}
           width={1920}

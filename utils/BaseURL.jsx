@@ -1,3 +1,3 @@
 
-const baseURL = 'https://api.hackingly.in';
+const baseURL = 'https://api.hackingly.xyz';
 export{baseURL}
